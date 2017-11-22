@@ -6,7 +6,7 @@ import TodoList from '../TodoList';
 import './App.css';
 
 export default class App extends Component {
-  static state = {
+  state = {
       todos: []
   };
 
@@ -30,7 +30,7 @@ export default class App extends Component {
 
   handleTodoAdd = (newTodo) => {
     this.setState({
-      todo: [newTodo, ...this.state.todos]
+      todos: [newTodo, ...this.state.todos]
     });
   };
 
@@ -38,7 +38,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <h1 className="app__header">Todo's List</h1>
-        <TodoEditor onNoteAdd={this.handleTodoAdd} />
+        <TodoEditor onTodoAdd={this.handleTodoAdd} />
         <TodoList
           todos={this.state.todos}
           onTodoDelete={this.handleTodoDelete}

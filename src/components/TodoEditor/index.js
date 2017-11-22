@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import './TodoEditor.css';
 
-const DEFAULT_COLOR = 'yellow';
+const DEFAULT_COLOR = '#E6E7A3';
 
 export default class TodoEditor extends Component {
 
-  static state = {
+  state = {
     text: ''
   };
 
@@ -17,15 +17,17 @@ export default class TodoEditor extends Component {
   };
 
   handleTodoAdd = () => {
-    const newTodo = {
-      text: this.state.text,
-      color: DEFAULT_COLOR,
-      id: Date.now(),
-      isChecked: false
-    };
+    if (this.state.text) {
+      const newTodo = {
+        text: this.state.text,
+        color: DEFAULT_COLOR,
+        id: Date.now(),
+        isChecked: false
+      };
 
-    this.props.onTodoAdd(newTodo);
-    this.resetState();
+      this.props.onTodoAdd(newTodo);
+      this.resetState();
+    }
   };
 
   resetState = () => {
