@@ -28,6 +28,20 @@ export default class App extends Component {
     });
   };
 
+  handleTodoCheck = (todoId) => {
+    const { todos } = this.state;
+    for (let indx in todos) {
+      if (todos[indx].id === todoId) {
+        todos[indx].isChecked = !todos[indx].isChecked;
+        break;
+      }
+    }
+    this.setState({
+      todos: [...this.state.todos]
+    });
+
+  };
+
   handleTodoAdd = (newTodo) => {
     this.setState({
       todos: [newTodo, ...this.state.todos]
@@ -37,11 +51,19 @@ export default class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1 className="app__header">Todo's List</h1>
+        <h2 className="app__header">Todo's List</h2>
         <TodoEditor onTodoAdd={this.handleTodoAdd} />
         <TodoList
-          todos={this.state.todos}
+          todos={this.state.todos.filter(todo => todo.isChecked !== true )}
           onTodoDelete={this.handleTodoDelete}
+          onTodoCheck={this.handleTodoCheck}
+        />
+        <hr />
+        <h2 className="app__header">Сompleted tasks</h2>
+        <TodoList
+          todos={this.state.todos.filter(todo => todo.isChecked !== false )}
+          onTodoDelete={this.handleTodoDelete}
+          onTodoCheck={this.handleTodoCheck}
         />
       </div>
     );

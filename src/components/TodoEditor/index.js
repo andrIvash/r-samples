@@ -16,18 +16,30 @@ export default class TodoEditor extends Component {
     });
   };
 
+
+  handleEnterDown = (event) => {
+    console.log('--- ', event.keyCode);
+    if (event.keyCode === 13 ) {
+      this.addTodo();
+    }
+  };
+
   handleTodoAdd = () => {
     if (this.state.text) {
-      const newTodo = {
-        text: this.state.text,
-        color: DEFAULT_COLOR,
-        id: Date.now(),
-        isChecked: false
-      };
-
-      this.props.onTodoAdd(newTodo);
-      this.resetState();
+      this.addTodo();
     }
+  };
+
+  addTodo = () => {
+    const newTodo = {
+      text: this.state.text,
+      color: DEFAULT_COLOR,
+      id: Date.now(),
+      isChecked: false
+    };
+
+    this.props.onTodoAdd(newTodo);
+    this.resetState();
   };
 
   resetState = () => {
@@ -45,6 +57,7 @@ export default class TodoEditor extends Component {
                   className="editor__textarea"
                   value={this.state.text}
                   onChange={this.handleTextChange}
+                  onKeyDown={this.handleEnterDown}
                 />
 
         <button className="editor__button" onClick={this.handleTodoAdd}>Add</button>

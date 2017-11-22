@@ -13,7 +13,7 @@ const masonryOptions = {
 
 export default class TodoList extends Component {
   render() {
-    const { todos, onTodoDelete } = this.props;
+    const { todos, onTodoDelete, onTodoCheck } = this.props;
 
     return (
       <Masonry
@@ -25,8 +25,10 @@ export default class TodoList extends Component {
             <Todo
               key={todo.id}
               id={todo.id}
+              isChecked={todo.isChecked}
               color={todo.color}
               onDelete={onTodoDelete}
+              onCheck={onTodoCheck}
             >
               {todo.text}
             </Todo>
