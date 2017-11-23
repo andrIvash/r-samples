@@ -29,17 +29,10 @@ export default class App extends Component {
   };
 
   handleTodoCheck = (todoId) => {
-    const { todos } = this.state;
-    for (let indx in todos) {
-      if (todos[indx].id === todoId) {
-        todos[indx].isChecked = !todos[indx].isChecked;
-        break;
-      }
-    }
     this.setState({
-      todos: [...this.state.todos]
+      todos: this.state.todos.map(todo =>
+        todo.id === todoId ? {...todo, isChecked : !todo.isChecked} : todo)
     });
-
   };
 
   handleTodoAdd = (newTodo) => {

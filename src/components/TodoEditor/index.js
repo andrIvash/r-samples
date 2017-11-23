@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './TodoEditor.css';
 
 const DEFAULT_COLOR = '#E6E7A3';
+const ENTER_KEYCODE = 13;
 
 export default class TodoEditor extends Component {
+
+  static propTypes = {
+    onTodoAdd : PropTypes.func.isRequired
+  };
 
   state = {
     text: ''
@@ -18,8 +24,7 @@ export default class TodoEditor extends Component {
 
 
   handleEnterDown = (event) => {
-    console.log('--- ', event.keyCode);
-    if (event.keyCode === 13 ) {
+    if (event.keyCode === ENTER_KEYCODE ) {
       this.addTodo();
     }
   };
