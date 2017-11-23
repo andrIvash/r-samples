@@ -2,6 +2,7 @@
   "name": "r-todo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://andrivash.github.io/r-samples/build/",
   "dependencies": {
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
