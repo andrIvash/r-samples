@@ -4,8 +4,8 @@
 
 [Demo][demo] | [Source][source]
 
-[demo]: http://
-[source]: http://
+[demo]: https://andrivash.github.io/r-samples/
+[source]: https://github.com/andrIvash/r-samples/tree/todo
 
 
 ## Getting started for dev
